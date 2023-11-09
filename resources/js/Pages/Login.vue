@@ -1,58 +1,81 @@
 <template>
-   <Head title="Log In" />
+  <Head title="Log In" />
+  <main>
+    <section>
+      <form @submit.prevent="submit">
+        <h2 style="text-align: center;">Log In</h2>
+        <div>
+          <label for="email"> Email </label>
 
+          <input v-model="form.email" type="email" name="email" id="email" required />
 
-<main class="grid place-items-center min-h-screen">
-  <section class="bg-white p-8 rounded-xl max-w-md mx-auto border w-full">
-    <h1 class="text-3xl mb-6">Log In</h1>
+          <div v-if="form.errors.email" v-text="form.errors.email"></div>
+        </div>
 
-    <form @submit.prevent="submit">
-      <div class="mb-6">
-        <label class="block mb-2 uppercase font-bold text-xs text-gray-700" for="email"> Email </label>
+        <div>
+          <label for="password"> Password </label>
 
-        <input v-model="form.email" class="border p-2 w-full rounded" type="email" name="email" id="email" required />
+          <input v-model="form.password" type="password" name="password" id="password" />
 
-        <div v-if="form.errors.email" v-text="form.errors.email" class="text-red-500 text-xs mt-1"></div>
-      </div>
+          <div v-if="form.errors.password" v-text="form.errors.password"></div>
+        </div>
 
-      <div class="mb-6">
-        <label class="block mb-2 uppercase font-bold text-xs text-gray-700" for="password"> Password </label>
-
-        <input
-          v-model="form.password"
-          class="border p-2 w-full rounded"
-          type="password"
-          name="password"
-          id="password"
-        />
-
-        <div v-if="form.errors.password" v-text="form.errors.password" class="text-red-500 text-xs mt-1"></div>
-      </div>
-
-      <div>
-        <button
-          type="submit"
-          class="bg-blue-400 text-white rounded py-2 px-4 hover:bg-blue-500"
-          :disabled="form.processing"
-        >
-          Log In
-        </button>
-      </div>
-    </form>
-  </section>
-</main>
+        <div>
+          <button type="submit" :disabled="form.processing">
+            Log In
+          </button>
+        </div>
+      </form>
+    </section>
+  </main>
 </template>
 <script setup>
 import { useForm } from '@inertiajs/vue3';
 import { Head } from '@inertiajs/vue3'
 
 let form = useForm({
-    email: '',
-    password: ''
+  email: '',
+  password: ''
 
 });
 let submit = () => {
-    form.post('/login');
+  form.post('/login');
 };
 
 </script>
+<style>
+input{
+  width: 100%;
+  padding: 12px 30px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+button{
+  width: 100%;
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+form{
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 30px;
+  display: inline-block;
+  margin-left: 40%;
+  margin-top: 10%;
+
+}
+</style>

@@ -1,10 +1,12 @@
 <template> 
 <Head title="Create User" />
    
-   <form @submit.prevent="submit">
+   <form @submit.prevent="submit" style="width: 25%;  margin-left: 30%; margin-top: 8%;">
+    <h2 style="text-align: center;">Register</h2>
     <div>
     <label for="name">Name</label><br>
     <input v-model="form.name" type="text" name="name" id="name" required><br>
+    <div></div>
     </div>
     <div>
     <label for="email">Email</label><br>
@@ -14,20 +16,20 @@
     <label for="password">Password</label><br>
     <input v-model="form.password" type="password" name="password" id="password" required><br>
     </div>
-    <button type="submit">Submit</button>
+     <button type="submit" :disabled="form.processing">Submit</button> <!-- :disabled="form.processing"  form işleniyor ise düğme pasif hale getirilir. -->
    </form>
 </template>
 <script setup>
-import { Head } from '@inertiajs/vue3'
+import { Head } from '@inertiajs/vue3';
 import { reactive } from 'vue';
-
+import { Inertia } from '@inertiajs/inertia';
 let form = reactive({
-    name: '',
-    email: '',
-    password: ''
+  name: '',
+  email: '',
+  password: '',
 });
-
 let submit = () => {
-    form.post('/users');
+  Inertia.post('/users', form);
 };
 </script>
+

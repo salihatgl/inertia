@@ -15,7 +15,7 @@ class UsersController extends Controller
 
         ]);
         User::create($attributes);
-        return redirect('login');
+        return to_route('login');
 
      }
 }
