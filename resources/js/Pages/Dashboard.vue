@@ -1,10 +1,12 @@
 <template>
     <div style="background-color: #333; padding: 10px;">
   <a href="#" style="color: white; text-decoration: none; margin: 0 10px;">Ana Sayfa</a>
-  <a href="#" style="color: white; text-decoration: none; margin: 0 10px;">Hakkımızda</a>
+  <Link href="/users" style="color: white; text-decoration: none; margin: 0 10px;">Users</Link>
   <Link href="/logout" method="post" style="color: white; text-decoration: none; margin: 0 10px; float: right;">Logout</Link>
   <a href="#" style="color: white; text-decoration: none; margin: 0 20px; float: right;">{{ user.name }}</a>
 </div>
+
+
 </template>
 
 <script setup>
@@ -14,6 +16,7 @@ import { Link} from '@inertiajs/vue3';
 
 const page = usePage()
 const user = computed(() => page.props.auth.user)
+
 </script>
 <style>
 .dropbtn {

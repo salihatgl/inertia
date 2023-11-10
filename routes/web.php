@@ -21,6 +21,7 @@ Route::get('login', [LoginController::class, 'create'])->name('login');
 Route::post('login', [LoginController::class, 'store'])->name('login');
 Route::post('logout', [LoginController::class, 'destroy'])->name('logout');
 
+
 Route::get('/users/create', function()
 {
 return Inertia::render('Create');
@@ -32,4 +33,5 @@ Route::middleware('auth')->group(function () {
 return Inertia::render('Dashboard');
 });
 Route::post('users', [UsersController::class, 'store']);
+Route::get('users',[UsersController::class,'index']);
 });
