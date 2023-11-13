@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
 use Inertia\Inertia;
 
 class UsersController extends Controller
@@ -14,7 +16,10 @@ class UsersController extends Controller
             'users' => User::all()->map(fn($user) => [
                 'name' => $user->name,
                 'id' => $user->id,
-                'email' => $user->email
+                'email' => $user->email,
+                // 'can' => [
+                //     'creatUser' => auth()->user()->can('create', User::class),
+                // ]
             ])
         ]);
     }

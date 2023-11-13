@@ -6,6 +6,7 @@
   <a href="#" style="color: white; text-decoration: none; margin: 0 20px; float: right;">{{ user.name }}</a>
 </div>
 
+<Link  href="/users/create"  style="color: black; text-decoration: none; margin: 0 10px;">Logout</Link> <!-- v-if="can.createUser" -->
 
 </template>
 
@@ -14,9 +15,15 @@ import { computed } from 'vue';
 import { usePage } from '@inertiajs/vue3';
 import { Link} from '@inertiajs/vue3';
 
+
 const page = usePage()
 const user = computed(() => page.props.auth.user)
-
+// let props = defineProps({
+//     can: {
+//       type: Object,
+//       default: () => ({ createUser:false }),
+//     },
+//   });
 </script>
 <style>
 .dropbtn {

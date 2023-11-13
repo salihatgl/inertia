@@ -5,6 +5,8 @@
   <Link href="/logout" method="post" style="color: white; text-decoration: none; margin: 0 10px; float: right;">Logout</Link>
   <a href="#" style="color: white; text-decoration: none; margin: 0 20px; float: right;"></a>
 </div>
+
+
 <table>
     <tr>
       <th>Id</th>
