@@ -22,6 +22,7 @@ class UsersController extends Controller
                 // ]
             ])
         ]);
+        return Inertia::render('Users');
     }
      public function store(Request $request){
         $attributes = $request ->validate([

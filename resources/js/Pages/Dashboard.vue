@@ -1,19 +1,21 @@
 <template>
+  
     <div style="background-color: #333; padding: 10px;">
-  <a href="#" style="color: white; text-decoration: none; margin: 0 10px;">Ana Sayfa</a>
+  <a href="/sssaas" style="color: white; text-decoration: none; margin: 0 10px;">Ana Sayfa</a>
   <Link href="/users" style="color: white; text-decoration: none; margin: 0 10px;">Users</Link>
   <Link href="/logout" method="post" style="color: white; text-decoration: none; margin: 0 10px; float: right;">Logout</Link>
   <a href="#" style="color: white; text-decoration: none; margin: 0 20px; float: right;">{{ user.name }}</a>
 </div>
 
 <Link  href="/users/create"  style="color: black; text-decoration: none; margin: 0 10px;">Logout</Link> <!-- v-if="can.createUser" -->
-
+<ErrorPage />
 </template>
 
 <script setup>
 import { computed } from 'vue';
 import { usePage } from '@inertiajs/vue3';
 import { Link} from '@inertiajs/vue3';
+import ErrorPage  from './ErrorPage.vue';
 
 
 const page = usePage()
