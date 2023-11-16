@@ -32,6 +32,6 @@ Route::middleware('auth')->group(function () {
 {
 return Inertia::render('Dashboard');
 });
-Route::post('users', [UsersController::class, 'store']);
-Route::get('users',[UsersController::class,'index']);
+Route::post('/users/users', [UsersController::class, 'store']);
+Route::get('/users/users',[UsersController::class,'index']);
 });

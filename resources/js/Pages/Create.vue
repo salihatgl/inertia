@@ -24,11 +24,14 @@ import { Head } from '@inertiajs/vue3';
 import { reactive } from 'vue';
 import { Inertia } from '@inertiajs/inertia';
 
+
+
 let form = reactive({
   name: '',
   email: '',
   password: '',
 });
+
 let submit = () => {
   Inertia.post('/users', form);
 };

@@ -4,9 +4,12 @@ namespace App\Exceptions;
 
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Throwable;
+use Inertia\Inertia;
+
 
 class Handler extends ExceptionHandler
 {
+    
     /**
      * The list of the inputs that are never flashed to the session on validation exceptions.
      *
@@ -17,6 +20,7 @@ class Handler extends ExceptionHandler
         'password',
         'password_confirmation',
     ];
+   
 
     /**
      * Register the exception handling callbacks for the application.
@@ -27,4 +31,21 @@ class Handler extends ExceptionHandler
             //
         });
     }
+    public function render($request, Throwable $e)
+    {
+        $response = parent::render($request, $e);
+    
+        if (!app()->environment(['local', 'testing']) && in_array($response->getStatusCode(), [500, 503, 404, 403])) {
+            return Inertia::render('ErrorPage', ['status' => $response->getStatusCode()])
+                ->toResponse($request->all())
+                ->setStatusCode($response->getStatusCode());
+        } elseif ($response->getStatusCode() === 419) {
+            return back()->with([
+                'message' => 'The page expired, please try again.',
+            ]);
+        }
+    
+        return $response;
+    }
+    
 }

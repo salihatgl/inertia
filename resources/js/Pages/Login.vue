@@ -28,16 +28,24 @@
       </form>
     </section>
   </main>
+  <ErrorPage :status="status" />
 </template>
 <script setup>
 import { useForm } from '@inertiajs/vue3';
 import { Head } from '@inertiajs/vue3'
+import { ref } from 'vue';
+import { usePage } from '@inertiajs/inertia-vue3';
+import ErrorPage from './ErrorPage.vue';
 
-let form = useForm({
-  email: '',
-  password: ''
+const page = usePage();
+const status = ref(page.props.status);
 
-});
+
+ let form = useForm({
+   email: '',
+   password: ''
+
+ });
 let submit = () => {
   form.post('/login');
 };
