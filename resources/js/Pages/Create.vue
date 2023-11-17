@@ -23,13 +23,20 @@
 import { Head } from '@inertiajs/vue3';
 import { reactive } from 'vue';
 import { Inertia } from '@inertiajs/inertia';
+// import { useRemember } from '@inertiajs/vue3'
 
+// const form = useRemember({
+//   name: null,
+//   email: null,
+//   password: null,
+// });
 
 
 let form = reactive({
   name: '',
   email: '',
   password: '',
+  _token: props.auth.csrf,
 });
 
 let submit = () => {
