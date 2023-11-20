@@ -7,10 +7,10 @@
   <a href="#" style="color: white; text-decoration: none; margin: 0 20px; float: right;">{{ user.name }}</a>
 </div>
 
-<Link  href="/users/create"  style="color: black; text-decoration: none; margin: 0 10px;">Logout</Link> <!-- v-if="can.createUser" -->
+<Link v-if="can && can.createUser" href="/users" style="color: white; text-decoration: none; margin: 0 10px;">New link</Link>
+
 
 </template>
-
 <script setup>
 import { computed } from 'vue';
 import { usePage } from '@inertiajs/vue3';
@@ -20,6 +20,8 @@ import { ref } from 'vue';
 const page = usePage();
 const status = ref(page.props.status);
  const user = computed(() => page.props.auth.user)
+
+ const { users, can } = defineProps(['users', 'can']);
 
 
 

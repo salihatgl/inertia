@@ -12,9 +12,8 @@ class UserPolicy
 {
     use HandlesAuthorization;
 
-    // public function create(User $user):bool
-    // {
-    //     return $user->email === 'susan@doe.com';
-    // }
-    
+    public function create(User $user)
+    {
+        return $user->email === 'salihatigli55@gmail.com';
+    }
 }

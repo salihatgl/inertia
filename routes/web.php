@@ -33,5 +33,5 @@ Route::middleware('auth')->group(function () {
 return Inertia::render('Dashboard');
 });
 Route::post('/users/users', [UsersController::class, 'store']);
-Route::get('/users/users',[UsersController::class,'index']);
+Route::get('/users/users', [UsersController::class, 'index'])->name('users.index');
 });
