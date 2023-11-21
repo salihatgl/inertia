@@ -1,19 +1,11 @@
 <template>
   <div style="background-color: #333; padding: 10px;">
-    
-    <a href="#" style="color: white; text-decoration: none; margin: 0 10px;">Ana Sayfa</a>
-    <Link href="/users" style="color: white; text-decoration: none; margin: 0 10px;">Users</Link>
-    <Link v-if="can && can.createUser" href="/users" style="color: white; text-decoration: none; margin: 0 10px;">New link</Link>
+    <Link href="/dashboard" style="color: white; text-decoration: none; margin: 0 10px;">Ana Sayfa</Link>
     <Link href="/logout" method="post" style="color: white; text-decoration: none; margin: 0 10px; float: right;">Logout</Link>
-    <a href="#" style="color: white; text-decoration: none; margin: 0 20px; float: right;"></a>
-    <p v-if="can.create_user" style="color: white; text-decoration: none; margin: 0 20px; float:left;">Create User</p>
   </div>
- 
-
-   
-  
-
-  <table>
+    <Link v-if="can.create_user"  href="/users/create" style="color: white; text-decoration: none; margin: 10px 17%; background-color: #4CAF50; padding: 10px; float:right; border-radius: 4px;">Create User</Link> 
+    <Link v-if="can.edit_user"  href="/user/edit" style="color: white; text-decoration: none; margin: 10px 17%; background-color: #4CAF50; padding: 10px; float:right; border-radius: 4px;">Edit</Link>
+ <table>
     <tr>
       <th>Id</th>
       <th>Ad</th>
@@ -27,15 +19,10 @@
   </table>
 </template>
 
-<script>
-import { Link } from '@inertiajs/inertia-vue3';
+<script setup>
+import { Link } from '@inertiajs/vue3';
 
-export default {
-  props: {
-    can: Object,
-    users: Array,
-  },
-};
+const props = defineProps(['can', 'users']);
 </script>
 
 <style>
@@ -47,10 +34,16 @@ table {
   margin-top: 3%;
 }
 
-th, td {
-  text-align: left;
+td {
+  text-align: center;
+  padding: 8px;
+  
+}
+th {
+  text-align: center;
   padding: 15px;
 }
+
 
 tr:nth-child(even) {
   background-color: #f2f2f2;

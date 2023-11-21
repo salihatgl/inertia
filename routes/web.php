@@ -34,4 +34,8 @@ return Inertia::render('Dashboard');
 });
 Route::post('/users/users', [UsersController::class, 'store']);
 Route::get('/users/users', [UsersController::class, 'index'])->name('users.index');
+Route::get('/user/edit', function () {
+    return Inertia::render('Edit');
+})->name('edit');
+Route::put('/user/update', [UsersController::class, 'update'])->name('user.update');
 });

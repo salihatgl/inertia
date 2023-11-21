@@ -36,7 +36,7 @@ let form = reactive({
   name: '',
   email: '',
   password: '',
-  _token: props.auth.csrf,
+
 });
 
 let submit = () => {

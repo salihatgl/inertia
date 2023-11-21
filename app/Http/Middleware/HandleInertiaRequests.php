@@ -44,6 +44,7 @@ class HandleInertiaRequests extends Middleware
                 'email' => $request->user()->email,
                 'can' => [
                     'create_user' => $request->user()->can('create', User::class),
+                    'edit_user' => $request->user()->can('edit', User::class),
                 ],
             ]
             : null,

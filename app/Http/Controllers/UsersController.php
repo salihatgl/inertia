@@ -13,17 +13,17 @@ class UsersController extends Controller
     public function index()
     {
         return Inertia::render('Users', [
-            'can' => [
-                'create_user' => Auth::user()->can('create', User::class),
+             'can' => [
+                 'create_user' => Auth::user()->can('create', User::class),
             ],
+             'can' => [
+                 'edit_user' => Auth::user()->can('edit', User::class),
+             ],
             'users' => User::all()->map(function ($user) {
                 return [
                 'name' => $user->name,
                 'id' => $user->id,
                 'email' => $user->email,
-                    'can' => [
-                        'edit_user' => Auth::user()->can('edit', $user),
-                    ],
                 ];
             }),
         ]);

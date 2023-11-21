@@ -25,6 +25,7 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
     
-        Gate::define('createUser', 'App\Policies\UserPolicy@create');
+
+    
     }
 }
