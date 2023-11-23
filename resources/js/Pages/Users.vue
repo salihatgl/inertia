@@ -4,7 +4,7 @@
     <Link href="/logout" method="post" style="color: white; text-decoration: none; margin: 0 10px; float: right;">Logout</Link>
   </div>
     <Link v-if="can.create_user"  href="/users/create" style="color: white; text-decoration: none; margin: 10px 17%; background-color: #4CAF50; padding: 10px; float:right; border-radius: 4px;">Create User</Link> 
-    <Link v-if="can.edit_user"  href="/user/edit" style="color: white; text-decoration: none; margin: 10px 17%; background-color: #4CAF50; padding: 10px; float:right; border-radius: 4px;">Edit</Link>
+   
  <table>
     <tr>
       <th>Id</th>

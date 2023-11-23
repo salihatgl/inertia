@@ -16,8 +16,5 @@ class UserPolicy
     {
         return $user->email === 'salihatigli55@gmail.com';
     }
-     public function edit(User $targetUser)
-     {
-         return $targetUser->id % 2 === 0;
-     }
+     
  }

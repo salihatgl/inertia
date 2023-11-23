@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\UsersController;
+use App\Http\Controllers\ProfileController;
 use Inertia\Inertia;
 
 /*
@@ -17,7 +18,7 @@ use Inertia\Inertia;
 */
 
 
-Route::get('login', [LoginController::class, 'create'])->name('login');
+Route::get('/', [LoginController::class, 'create'])->name('login');
 Route::post('login', [LoginController::class, 'store'])->name('login');
 Route::post('logout', [LoginController::class, 'destroy'])->name('logout');
 
@@ -25,17 +26,15 @@ Route::post('logout', [LoginController::class, 'destroy'])->name('logout');
 Route::get('/users/create', function()
 {
 return Inertia::render('Create');
-});
+})->name('users.create');
 
 Route::middleware('auth')->group(function () {
     Route::get('/dashboard', function()
 {
 return Inertia::render('Dashboard');
 });
-Route::post('/users/users', [UsersController::class, 'store']);
+Route::post('/users', [UsersController::class, 'store']);
 Route::get('/users/users', [UsersController::class, 'index'])->name('users.index');
-Route::get('/user/edit', function () {
-    return Inertia::render('Edit');
-})->name('edit');
-Route::put('/user/update', [UsersController::class, 'update'])->name('user.update');
+
+
 });

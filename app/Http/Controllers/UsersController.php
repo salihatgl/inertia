@@ -16,9 +16,6 @@ class UsersController extends Controller
              'can' => [
                  'create_user' => Auth::user()->can('create', User::class),
             ],
-             'can' => [
-                 'edit_user' => Auth::user()->can('edit', User::class),
-             ],
             'users' => User::all()->map(function ($user) {
                 return [
                 'name' => $user->name,
@@ -36,7 +33,7 @@ class UsersController extends Controller
 
         ]);
         User::create($attributes);
-        return to_route('login');
+        return to_route('users.create');
 
      }
 }
