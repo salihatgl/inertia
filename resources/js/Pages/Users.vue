@@ -25,7 +25,7 @@ import { Link } from '@inertiajs/vue3';
 const props = defineProps(['can', 'users']);
 </script>
 
-<style>
+<!-- <style>
 table {
   border-collapse: collapse;
   width: 70%;
@@ -53,4 +53,4 @@ th {
   background-color: #04AA6D;
   color: white;
 }
-</style>
+</style> -->

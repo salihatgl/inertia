@@ -1,39 +1,35 @@
 <template>
-  <Head title="Log In" />
-  <main>
-    <section>
-      <form @submit.prevent="submit">
-        <h2 style="text-align: center;">Log In</h2>
-        <div>
-          <label for="email"> Email </label>
+<Head title="Log In" />
+  <main class="form-signin">
+ <form @submit.prevent="submit">
+    <h1 class="text-center h3 mb-5 fw-normal">Please sign in</h1>
 
-          <input v-model="form.email" type="email" name="email" id="email" required />
+    <div class="form-floating">
+      <input  v-model="form.email" type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+      <label for="floatingInput">Email address</label>
+      <div v-if="form.errors.email" v-text="form.errors.email"></div>
+     
+    </div>
+    <div class="form-floating">
+      <input  v-model="form.password" type="password" class="form-control" id="floatingPassword" placeholder="Password">
+      <label for="floatingPassword">Password</label>
+      <div v-if="form.errors.password" v-text="form.errors.password"></div>
+    </div>
 
-          <div v-if="form.errors.email" v-text="form.errors.email"></div>
-        </div>
+    <button class="w-100 btn btn-lg btn-primary mb-4" type="submit" :disabled="form.processing">Sign in</button>
+    
+  </form>
+  <button class="w-100 btn btn-lg btn-primary" type="submit"><Link style="text-decoration: none; color: white;" href="/users/create">Create User</Link></button>
+</main>
 
-        <div>
-          <label for="password"> Password </label>
 
-          <input v-model="form.password" type="password" name="password" id="password" />
-
-          <div v-if="form.errors.password" v-text="form.errors.password"></div>
-        </div>
-
-        <div>
-          <button type="submit" :disabled="form.processing">
-            Log In
-          </button>
-        </div>
-      </form>
-    </section>
-  </main>
-</template>
+</template> 
 <script setup>
 import { useForm } from '@inertiajs/vue3';
 import { Head } from '@inertiajs/vue3'
 import { ref } from 'vue';
 import { usePage } from '@inertiajs/inertia-vue3';
+import { Link } from '@inertiajs/vue3';
 
 
 
@@ -49,40 +45,37 @@ let submit = () => {
   form.post('/login');
 };
 
-</script>
+ </script>
 <style>
-input{
+body {
+
+  background-color: #f5f5f5;
+}
+.form-signin {
   width: 100%;
-  padding: 12px 30px;
-  margin: 8px 0;
-  display: inline-block;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
-}
-
-button{
-  width: 100%;
-  background-color: #4CAF50;
-  color: white;
-  padding: 14px 20px;
-  margin: 8px 0;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-button:hover {
-  background-color: #45a049;
-}
-
-form{
-  border-radius: 5px;
-  background-color: #f2f2f2;
-  padding: 30px;
-  display: inline-block;
-  margin-left: 40%;
+  max-width: 400px;
+  padding: 50px;
+  margin: auto;
   margin-top: 10%;
+  border: 1px solid gray;
+  border-radius: 10px;
+
+
 
 }
-</style>
+.form-signin .form-floating:focus-within {
+  z-index: 2;
+}
+
+.form-signin input[type="email"] {
+  margin-bottom: 20px;
+}
+
+.form-signin input[type="password"] {
+  margin-bottom: 20px;
+
+}
+form-control{
+  margin-bottom: 20px;
+}
+</style> 
