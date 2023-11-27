@@ -35,6 +35,6 @@ return Inertia::render('Dashboard');
 });
 Route::post('/users', [UsersController::class, 'store']);
 Route::get('/users/users', [UsersController::class, 'index'])->name('users.index');
-
+// Route::resources(name:'users', controller:\App\Http\Controllers\UserController::class);
 
 });

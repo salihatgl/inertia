@@ -1,6 +1,5 @@
 <template>
    <div class="b-example-divider"></div>
-
 <header class="p-3 mb-3 border-bottom">
   <div class="container">
     <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
@@ -9,10 +8,8 @@
       </a>
 
       <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-        <li><Link class="nav-link px-2 link-secondary" href="/dashboard" >Ana Sayfa</Link></li>
+        <li><Link class="nav-link px-2 link-secondary" href="/dashboard" >Home</Link></li>
         <li><Link href="/users/users" class="nav-link px-2 link-dark">Users</Link></li>
-        <li><a href="#" class="nav-link px-2 link-dark">Customers</a></li>
-        <li><a href="#" class="nav-link px-2 link-dark">Products</a></li>
       </ul>
 
 
