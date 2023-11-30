@@ -15,10 +15,11 @@
 
       <div class="dropdown text-end">
         <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-         {{ user.name }}
+          {{ user.name }}
         </a>
         <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
           <li><Link href="/logout" method="post" class="dropdown-item">Logout</Link></li>
+          <li><Link href="/profile/edit" class="dropdown-item">Edit</Link></li>
         </ul>
       </div>
     </div>
@@ -27,11 +28,11 @@
 </template>
 <script setup>
 import { computed, ref } from 'vue';
-import { usePage, Link } from '@inertiajs/vue3';
-import Loginavbar from '@/Pages/Loginavbar.vue';
+import { usePage, Link , useForm} from '@inertiajs/vue3'
 
- const page = usePage();
- const user = computed(() => page.props.auth.user)
+  const page = usePage();
+ const user = computed(() =>page.props.auth.user); 
+
 
 
 </script>

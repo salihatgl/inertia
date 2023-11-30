@@ -6,6 +6,7 @@ use App\Http\Controllers\UsersController;
 use App\Http\Controllers\ProfileController;
 use Inertia\Inertia;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -35,6 +36,8 @@ return Inertia::render('Dashboard');
 });
 Route::post('/users', [UsersController::class, 'store']);
 Route::get('/users/users', [UsersController::class, 'index'])->name('users.index');
-// Route::resources(name:'users', controller:\App\Http\Controllers\UserController::class);
+// Route::resource('users',UsersController::class);
+Route::get('/profile/edit', [UsersController::class, 'edit'])->name('profile.edit');
+Route::put('/profile/update', [UsersController::class, 'update'])->name('profile.update');
 
 });
