@@ -32,8 +32,5 @@ import { usePage, Link , useForm} from '@inertiajs/vue3'
 
   const page = usePage();
  const user = computed(() =>page.props.auth.user); 
-
-
-
 </script>
 

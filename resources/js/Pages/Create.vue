@@ -4,25 +4,24 @@
    <form @submit.prevent="submit" >
     <h2 style="text-align: center;">Register</h2>
     <div class="form-floating">
-      <input  v-model="form.name" type="name" class="form-control" id="floatingInput" placeholder="">
-      <label for="floatingInput">Name</label>
+      <input  v-model="form.name" type="name" class="form-control" id="floatingNameInput" placeholder="">
+      <label for="floatingNameInput">Name</label>
     </div>
     <div class="form-floating">
-      <input  v-model="form.email" type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-      <label for="floatingInput">Email address</label>
+      <input  v-model="form.email" type="email" class="form-control" id="floatingEmailInput" placeholder="name@example.com">
+      <label for="floatingEmailInput">Email address</label>
     </div>
     <div class="form-floating">
-      <input  v-model="form.password" type="password" class="form-control" id="floatingInput" placeholder="">
-      <label for="floatingInput">Password</label>
+      <input  v-model="form.password" type="password" class="form-control" id="floatingPasswordInput" placeholder="">
+      <label for="floatingPasswordInput">Password</label>
     </div>
      <button class="w-100 btn btn-lg btn-primary mb-4" type="submit" :disabled="form.processing">Submit</button> <!-- :disabled="form.processing"  form işleniyor ise düğme pasif hale getirilir. -->
    </form>
 </main>
 </template>
 <script setup>
-import { Head } from '@inertiajs/vue3';
+import { Head, router } from '@inertiajs/vue3';
 import { reactive } from 'vue';
-import { Inertia } from '@inertiajs/inertia';
 // import { useRemember } from '@inertiajs/vue3'
 
 // const form = useRemember({
@@ -40,7 +39,7 @@ let form = reactive({
 });
 
 let submit = () => {
-  Inertia.post('/users', form);
+  router.post('/users', form);
 };
 
        

@@ -34,10 +34,14 @@ Route::middleware('auth')->group(function () {
 {
 return Inertia::render('Dashboard');
 });
-Route::post('/users', [UsersController::class, 'store']);
+Route::post('/users', [UsersController::class, 'store'])->name('users');
 Route::get('/users/users', [UsersController::class, 'index'])->name('users.index');
+Route::get('users/{user}/edit', [UsersController::class, 'edit2'])
+    ->name('users.edit');
 // Route::resource('users',UsersController::class);
 Route::get('/profile/edit', [UsersController::class, 'edit'])->name('profile.edit');
 Route::put('/profile/update', [UsersController::class, 'update'])->name('profile.update');
+Route::delete('users/destroy/{userId}', [UsersController::class, 'usersdestroy'])
+    ->name('users.destroy');
 
 });

@@ -70,5 +70,11 @@ class UsersController extends Controller
 
     return Redirect::route('profile.edit');
 }
+public function usersdestroy(User $user)
+{
+    $user->delete();
+
+    return Redirect::back()->with('success', 'Contact deleted.');
 }
 
+}
