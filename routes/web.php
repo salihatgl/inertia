@@ -18,30 +18,31 @@ use Inertia\Inertia;
 |
 */
 
-
+// Login
 Route::get('/', [LoginController::class, 'create'])->name('/');
 Route::post('login', [LoginController::class, 'store'])->name('login');
+// Logout
 Route::post('logout', [LoginController::class, 'destroy'])->name('logout');
 
-
+//user crete
 Route::get('/users/create', function()
 {
 return Inertia::render('Create');
 })->name('users.create');
 
+
 Route::middleware('auth')->group(function () {
-    Route::get('/dashboard', function()
+ //Dashboard
+Route::get('/dashboard', function()
 {
 return Inertia::render('Dashboard');
 });
+//users list
 Route::post('/users', [UsersController::class, 'store'])->name('users');
 Route::get('/users/users', [UsersController::class, 'index'])->name('users.index');
-Route::get('users/{user}/edit', [UsersController::class, 'edit2'])
-    ->name('users.edit');
-// Route::resource('users',UsersController::class);
+//users edit
 Route::get('/profile/edit', [UsersController::class, 'edit'])->name('profile.edit');
 Route::put('/profile/update', [UsersController::class, 'update'])->name('profile.update');
-Route::delete('users/destroy/{userId}', [UsersController::class, 'usersdestroy'])
-    ->name('users.destroy');
-
+//users delete
+Route::delete('users/destroy/{user}', [UsersController::class, 'destroy'])->name('users.destroy');
 });

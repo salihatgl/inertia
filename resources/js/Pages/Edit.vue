@@ -39,9 +39,7 @@ export default {
     },
     methods: {
         updateProfile() {
-            router.put('/profile/update', this.form, {
-            // handle success, e.g., redirect or show a success message
-            });
+            router.put('/profile/update', this.form, {});
         },
     },
     components: { Loginavbar }

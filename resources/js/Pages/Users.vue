@@ -7,14 +7,11 @@
   <tbody>
     <tr class="table-success">
       <th>Id</th>
-      <th>Ad</th>
+      <th>Name</th>
       <th>E-mail</th>
-      <th>E-mail</th>
+      <th>Delete</th>
     </tr>
     <tr v-for="user in users" :key="user.id" >
-      <!-- <td>{{ user.id }}</td>
-      <td>{{ user.name }}</td>
-      <td>{{ user.email }}</td> -->
       <td>
             <Link class="link" :href="`/users/${user.id}/edit`" tabindex="-1">
               {{ user.id }}
@@ -30,11 +27,11 @@
               {{ user.email }}
             </Link>
           </td>
-          <td>
-            <Link class="link" :href="`/users/${user.id}/edit`" tabindex="-1">
-              Edit
-            </Link>
-            <button  @click="deleteUser(user.id)" tabindex="-1">
+          <td v-if="can.delete_user">
+            <!-- <Link class="link" :href="`/users/${user.id}/edit`" tabindex="-1" @click="editUser(user.id)">
+            Edit
+            </Link>  -->
+            <button class="btn btn-danger" @click="deleteUser(user.id)" tabindex="-1">
               Delete
             </button>
           </td>
@@ -56,6 +53,8 @@ const deleteUser = (userId) => {
     router.delete(`/users/destroy/${userId}`);
   }
 };
+
+
 </script>
 <style>
 .link{

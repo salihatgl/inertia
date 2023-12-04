@@ -18,7 +18,12 @@ class UsersController extends Controller
         return Inertia::render('Users', [
              'can' => [
                  'create_user' => Auth::user()->can('create', User::class),
+                 'delete_user' => Auth::user()->can('delete', User::class),
             ],
+        //     'can' => [
+
+        //         'delete_user' => Auth::user()->can('delete', User::class),
+        //    ],
             'users' => User::all()->map(function ($user) {
                 return [
                 'name' => $user->name,
@@ -70,7 +75,7 @@ class UsersController extends Controller
 
     return Redirect::route('profile.edit');
 }
-public function usersdestroy(User $user)
+public function destroy(User $user)
 {
     $user->delete();
 
